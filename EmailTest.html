@@ -171,10 +171,12 @@
                     myClientApp = new window.purecloud.apps.ClientApp({
                         gcHostOriginQueryParam: hostQueryParamName,
                         gcTargetEnvQueryParam: targetEnvQueryParamName
-                    });console.log("first if");
+                    });
+                    console.log("first if");
                 } else if (queryParams.get(envQueryParamName)) {
                     // Compute Genesys Cloud region from pcEnvironment
-                    myClientApp = new window.purecloud.apps.ClientApp({ pcEnvironmentQueryParam: envQueryParamName });console.log("second if");
+                    myClientApp = new window.purecloud.apps.ClientApp({ pcEnvironmentQueryParam: envQueryParamName });
+                    console.log("second if");
                 } else {
                     // Use default Genesys Cloud region
                     myClientApp = new window.purecloud.apps.ClientApp();
@@ -197,9 +199,11 @@
                 $msgField.on('input change', setFormSubmissionState);
 
                 $('form').submit(function (e) {
+                    console.log("submit");
                     e.preventDefault();
 
                     if (canSubmitForm() === false) {
+                        console.log("return false");
                         return false;
                     }
 
@@ -215,10 +219,12 @@
                     if (timeoutInt == timeoutStr) {
                         options.timeout = timeoutInt;
                     }
+                    console.log("alerting client");
 
                     myClientApp.alerting.showToastPopup($titleField.val(), $msgField.val(), options);
                     $titleField.val('');
                     $msgField.val('');
+                    console.log("alerted client");
                     setFormSubmissionState();
                 });
 
