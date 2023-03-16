@@ -171,13 +171,14 @@
                     myClientApp = new window.purecloud.apps.ClientApp({
                         gcHostOriginQueryParam: hostQueryParamName,
                         gcTargetEnvQueryParam: targetEnvQueryParamName
-                    });
+                    });console.log("first if");
                 } else if (queryParams.get(envQueryParamName)) {
                     // Compute Genesys Cloud region from pcEnvironment
-                    myClientApp = new window.purecloud.apps.ClientApp({ pcEnvironmentQueryParam: envQueryParamName });
+                    myClientApp = new window.purecloud.apps.ClientApp({ pcEnvironmentQueryParam: envQueryParamName });console.log("second if");
                 } else {
                     // Use default Genesys Cloud region
                     myClientApp = new window.purecloud.apps.ClientApp();
+                    console.log("third if");
                 }
 
                 // Toast
