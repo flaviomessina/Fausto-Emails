@@ -51,7 +51,7 @@
 
       return client.loginImplicitGrant(clientId, redirectUri)
 
-      console.log("after loginImplicitGrant");
+      
 
 
         .then(data =>  usersApi.getUsersMe())
@@ -63,6 +63,7 @@
             'Never gonna give you up, never gonna let you down 😊');
         })
         .catch(err => console.log(err));
+        console.log("after loginImplicitGrant");
 
     }
 
