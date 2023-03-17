@@ -13,13 +13,13 @@
     <script type="text/javascript">
     console.log("Hello world!");
 
-    const clientId = '--- CLIENT ID HERE ---';
+    const clientId = 'cb672a64-8ae6-4044-9f91-063b0ef18bf8';
     // const redirectUri = 'http://localhost:8080/index.html';
     const redirectUri = 'https://flaviomessina.github.io/Fausto-Emails/client-app-sdk.html';
 
     const appName = 'sample_app';
-    const qParamLanguage = 'language';
-    const qParamEnvironment = 'environment';
+    const qParamLanguage = 'en-gb';
+    const qParamEnvironment = 'mypurecloud.ie';
 
     // Default values are assigned but values should 
     // be set on the function 'assignConfiguration'
@@ -47,7 +47,11 @@
       client.setPersistSettings(true, appName);
       client.setEnvironment(environment);
 
+      console.log("loginImplicitGrant");
+
       return client.loginImplicitGrant(clientId, redirectUri)
+
+      console.log("after loginImplicitGrant");
 
 
         .then(data =>  usersApi.getUsersMe())
