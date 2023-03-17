@@ -2,6 +2,14 @@
     <head>
       <script src="https://sdk-cdn.mypurecloud.com/javascript/160.1.0/purecloud-platform-client-v2.min.js"></script>
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
+
+      <script type="text/javascript">
+        function handleClick() {
+        alert("Favorite weird creature: " + getRadioButtonValue(document.aye.whichThing));
+        //event.preventDefault(); // disable normal form submit behavior
+        return false; // prevent further bubbling of event
+      }
+      </script>
       </head>
 
     <body>
@@ -10,6 +18,11 @@
     
      <script>$(function () {
     -->
+    <form onSubmit="return handleClick()">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <input type="submit" value="Search">
+  </form>
     <script type="text/javascript">
     console.log("Hello world!");
 
@@ -50,9 +63,6 @@
       console.log("loginImplicitGrant");
 
       return client.loginImplicitGrant(clientId, redirectUri)
-
-      
-
 
         .then(data =>  usersApi.getUsersMe())
         .then(data => {
