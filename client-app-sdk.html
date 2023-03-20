@@ -8,16 +8,20 @@
           console.log("handleClick");
         alert("Favorite weird creature");
         //event.preventDefault(); // disable normal form submit behavior
-        addInteraction();
+        addInteraction("1234", "test@test", "hello");
         return false; // prevent further bubbling of event
       }
 
-      function addInteraction() {
+      function addInteraction(interactionID, Sender, Subject) {
           console.log("addInteraction");
         var table = document.getElementById("Table_Interactions");
         var rowNode = document.createElement("tr");
         var cellNode = document.createElement("td");
-        var textNode = document.createTextNode("John Doe");
+        var textNode = document.createTextNode(interactionID);
+        var cellNode = document.createElement("td");
+        var textNode = document.createTextNode(Sender);
+        var cellNode = document.createElement("td");
+        var textNode = document.createTextNode(Subject);
 
         cellNode.appendChild(textNode);
         rowNode.appendChild(cellNode);
@@ -25,11 +29,9 @@
       }
       </script>
       </head>
-
     <body>
       <h1>Email Test</h1>
     <!--  <button type="submit" onsubmit="">Send Toast</button>
-    
      <script>$(function () {
     -->
     <form onSubmit="return handleClick()">
@@ -41,8 +43,9 @@
     <table id="Table_Interactions" class="table table-borderless table-striped table-earning">
       <thead>
         <tr>
-          <th>date</th>
-          <th>file name</th>
+          <th>InteractionID</th>
+          <th>Sender</th>
+          <th>Subject</th>
         </tr>
       </thead>
       <tbody id="tableBody"></tbody>
@@ -78,7 +81,6 @@
       let myClientApp = new ClientApp({
           pcEnvironment: environment
       });
-
 
       // Configure and Authenticate Platform Client
       client.setPersistSettings(true, appName);
