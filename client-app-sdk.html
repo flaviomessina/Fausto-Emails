@@ -91,6 +91,10 @@
 
     let userDetails = null;
 
+    let integrationsApi = null;
+    let architectApi = null;
+
+
     /**
      * Configure both the Platform SDK and the Client App SDK
      */
@@ -124,8 +128,8 @@
         .catch(err => console.log(err));
         console.log("after loginImplicitGrant");
 
-        let integrationsApi = new platformClient.IntegrationsApi();
-        let architectApi = new platformClient.ArchitectApi();
+        integrationsApi = new platformClient.IntegrationsApi();
+        architectApi = new platformClient.ArchitectApi();
     }
 
     /**
@@ -185,8 +189,6 @@
         });
 
     }
-
-    
     </script>
     </body>
 </html>
