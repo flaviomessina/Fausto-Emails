@@ -26,10 +26,10 @@
 
         cell1Node.appendChild(text1Node);
         rowNode.appendChild(cell1Node);
-        cell2Node.appendChild(text2Node);
-        rowNode.appendChild(cell2Node);
-        cell3Node.appendChild(text3Node);
-        rowNode.appendChild(cell3Node);
+        //cell2Node.appendChild(text2Node);
+        //rowNode.appendChild(cell2Node);
+        //cell3Node.appendChild(text3Node);
+        //rowNode.appendChild(cell3Node);
         table.appendChild(rowNode);
       }
 
@@ -41,7 +41,7 @@
       console.log(searchId)
       console.log(searchTerm)
 
-      dataTableRow = '{ "searchID": "'+ searchId +'", "search": "'+ searchTerm +'"'};
+      dataTableRow = '{ "searchID": "'+ searchId +'", "search": "'+ searchTerm +'"}';
 
       console.log(dataTableRow);
 
