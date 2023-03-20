@@ -6,7 +6,7 @@
       <script type="text/javascript">
         function handleClick() {
           console.log("handleClick");
-        alert("Favorite weird creature");
+        //alert("Favorite weird creature");
         //event.preventDefault(); // disable normal form submit behavior
         addInteraction("1234", "test@test", "hello");
         addRow("testSearch")
@@ -26,13 +26,36 @@
 
         cell1Node.appendChild(text1Node);
         rowNode.appendChild(cell1Node);
-        //cell2Node.appendChild(text2Node);
-        //rowNode.appendChild(cell2Node);
-        //cell3Node.appendChild(text3Node);
-        //rowNode.appendChild(cell3Node);
+        cell2Node.appendChild(text2Node);
+        rowNode.appendChild(cell2Node);
+        cell3Node.appendChild(text3Node);
+        rowNode.appendChild(cell3Node);
         table.appendChild(rowNode);
       }
 
+      function addRow(searchTerm){
+      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
+      let dataTableRow = null; // {String: Object} | 
+      let searchId = Date.now();
+
+      console.log(searchId)
+      console.log(searchTerm)
+
+      dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
+
+      console.log(dataTableRow);
+
+      // Create a new row entry for the datatable.
+      //architectApi = new platformClient.ArchitectApi();
+      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
+        .then((data) => {
+          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
+        })
+        .catch((err) => {
+          console.log("There was a failure calling postFlowsDatatableRows");
+          console.error(err);
+        });
+    }
       
       </script>
       </head>
@@ -171,29 +194,7 @@
         });
     }
 
-    function addRow(searchTerm){
-      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
-      let dataTableRow = null; // {String: Object} | 
-      let searchId = Date.now();
-
-      console.log(searchId)
-      console.log(searchTerm)
-
-      dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
-
-      console.log(dataTableRow);
-
-      // Create a new row entry for the datatable.
-      //architectApi = new platformClient.ArchitectApi();
-      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
-        .then((data) => {
-          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
-        })
-        .catch((err) => {
-          console.log("There was a failure calling postFlowsDatatableRows");
-          console.error(err);
-        });
-    }
+    
     </script>
     </body>
 </html>
