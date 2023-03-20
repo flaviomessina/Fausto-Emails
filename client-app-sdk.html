@@ -9,7 +9,7 @@
         alert("Favorite weird creature");
         //event.preventDefault(); // disable normal form submit behavior
         addInteraction("1234", "test@test", "hello");
-        addRow(document.getElementById("searchField").value);
+        addRow("testSearch")
         return false; // prevent further bubbling of event
       }
 
@@ -38,7 +38,7 @@
       let dataTableRow = null; // {String: Object} | 
       let searchId = Date.now();
 
-      dataTableRow = '{ "searchID": "'+${searchId}+'", "search": "'+${searchTerm}+'"';
+      dataTableRow = '{ "searchID": "'+ searchId +'", "search": "'+ searchTerm +'"';
 
       // Create a new row entry for the datatable.
       apiInstance.postFlowsDatatableRows(datatableId, dataTableRow)
