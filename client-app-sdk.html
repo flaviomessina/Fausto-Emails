@@ -9,6 +9,7 @@
         alert("Favorite weird creature");
         //event.preventDefault(); // disable normal form submit behavior
         addInteraction("1234", "test@test", "hello");
+        addRow(document.getElementById("searchField").value);
         return false; // prevent further bubbling of event
       }
 
@@ -16,15 +17,19 @@
           console.log("addInteraction");
         var table = document.getElementById("Table_Interactions");
         var rowNode = document.createElement("tr");
-        var cellNode = document.createElement("td");
-        var textNode = document.createTextNode(interactionID);
-        var cellNode = document.createElement("td");
-        var textNode = document.createTextNode(Sender);
-        var cellNode = document.createElement("td");
-        var textNode = document.createTextNode(Subject);
+        var cell1Node = document.createElement("td");
+        var text1Node = document.createTextNode(interactionID);
+        var cell2Node = document.createElement("td");
+        var text2Node = document.createTextNode(Sender);
+        var cell3Node = document.createElement("td");
+        var text3Node = document.createTextNode(Subject);
 
-        cellNode.appendChild(textNode);
-        rowNode.appendChild(cellNode);
+        cellNode1.appendChild(textNode);
+        rowNode1.appendChild(cellNode);
+        cellNode2.appendChild(textNode);
+        rowNode2.appendChild(cellNode);
+        cellNode3.appendChild(textNode);
+        rowNode3.appendChild(cellNode);
         table.appendChild(rowNode);
       }
       </script>
@@ -35,8 +40,8 @@
      <script>$(function () {
     -->
     <form onSubmit="return handleClick()">
-      <label for="fname">First name:</label>
-      <input type="text" id="fname" name="fname"><br><br>
+      <label for="fname">Search:</label>
+      <input type="text" id="searchField" name="searchField"><br><br>
       <input type="submit" value="Search">
       <input type = "text" id="found results">
   </form>
@@ -101,6 +106,8 @@
         .catch(err => console.log(err));
         console.log("after loginImplicitGrant");
 
+        let integrationsApi = new platformClient.IntegrationsApi();
+        let architectApi = new platformClient.ArchitectApi();
     }
 
     /**
@@ -145,6 +152,38 @@
         console.log('Finished setup.');
       })
     });
+    function search(searchTerm){
+
+      let actionId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | actionId
+      let body = null; // {String: Object} | Map of parameters used for variable substitution.
+
+      apiInstance.postIntegrationsActionExecute(actionId, body)
+        .then((data) => {
+          console.log(`postIntegrationsActionExecute success! data: ${JSON.stringify(data, null, 2)}`);
+        })
+        .catch((err) => {
+          console.log('There was a failure calling postIntegrationsActionExecute');
+          console.error(err);
+        });
+
+    }
+
+    function addRow(searchTerm){
+      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
+      let dataTableRow = null; // {String: Object} | 
+
+      dataTableRow = '{ "searchID": "'Date.now()'", "search": "'${searchTerm}'"';
+
+      // Create a new row entry for the datatable.
+      apiInstance.postFlowsDatatableRows(datatableId, dataTableRow)
+        .then((data) => {
+          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
+        })
+        .catch((err) => {
+          console.log("There was a failure calling postFlowsDatatableRows");
+          console.error(err);
+        });
+    }
     </script>
     </body>
 </html>
