@@ -112,8 +112,7 @@
         .catch(err => console.log(err));
         console.log("after loginImplicitGrant");
 
-        integrationsApi = new platformClient.IntegrationsApi();
-        architectApi = new platformClient.ArchitectApi();
+        
 
 
         let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
@@ -178,7 +177,10 @@
      //   document.getElementById('span_language').innerText = language;
      //   document.getElementById('span_name').innerText = userDetails.name;
 
-        console.log('Finished setup.');
+      integrationsApi = new platformClient.IntegrationsApi();
+      architectApi = new platformClient.ArchitectApi();
+        
+      console.log('Finished setup.');
     //  })
     });
     function search(searchTerm){
