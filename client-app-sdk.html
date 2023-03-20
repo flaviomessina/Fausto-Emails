@@ -46,6 +46,7 @@
       console.log(dataTableRow);
 
       // Create a new row entry for the datatable.
+      architectApi = new platformClient.ArchitectApi();
       architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
         .then((data) => {
           console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
@@ -170,14 +171,14 @@
       console.log(`language: ${language}`);
 
       setupGenesysClients()
-      .then(() => { 
+      //.then(() => { 
         // Display values to the page
-        document.getElementById('span_environment').innerText = environment;
-        document.getElementById('span_language').innerText = language;
-        document.getElementById('span_name').innerText = userDetails.name;
+      //  document.getElementById('span_environment').innerText = environment;
+     //   document.getElementById('span_language').innerText = language;
+     //   document.getElementById('span_name').innerText = userDetails.name;
 
         console.log('Finished setup.');
-      })
+    //  })
     });
     function search(searchTerm){
 
