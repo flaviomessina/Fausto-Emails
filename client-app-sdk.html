@@ -32,6 +32,24 @@
         rowNode.appendChild(cell3Node);
         table.appendChild(rowNode);
       }
+
+      function addRow(searchTerm){
+      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
+      let dataTableRow = null; // {String: Object} | 
+      let searchId = Date.now();
+
+      dataTableRow = '{ "searchID": "'+${searchId}+'", "search": "'+${searchTerm}+'"';
+
+      // Create a new row entry for the datatable.
+      apiInstance.postFlowsDatatableRows(datatableId, dataTableRow)
+        .then((data) => {
+          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
+        })
+        .catch((err) => {
+          console.log("There was a failure calling postFlowsDatatableRows");
+          console.error(err);
+        });
+    }
       </script>
       </head>
     <body>
@@ -44,7 +62,7 @@
       <input type="text" id="searchField" name="searchField"><br><br>
       <input type="submit" value="Search">
       <input type = "text" id="found results">
-  </form>
+    </form>
     <table id="Table_Interactions" class="table table-borderless table-striped table-earning">
       <thead>
         <tr>
@@ -168,23 +186,7 @@
 
     }
 
-    function addRow(searchTerm){
-      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
-      let dataTableRow = null; // {String: Object} | 
-      let searchId = Date.now();
-
-      dataTableRow = '{ "searchID": "'${searchId}'", "search": "'${searchTerm}'"';
-
-      // Create a new row entry for the datatable.
-      apiInstance.postFlowsDatatableRows(datatableId, dataTableRow)
-        .then((data) => {
-          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
-        })
-        .catch((err) => {
-          console.log("There was a failure calling postFlowsDatatableRows");
-          console.error(err);
-        });
-    }
+    
     </script>
     </body>
 </html>
