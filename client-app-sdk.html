@@ -43,6 +43,8 @@
 
       dataTableRow = '{ "searchID": "'+ searchId +'", "search": "'+ searchTerm +'"';
 
+      console.log(dataTableRow);
+
       // Create a new row entry for the datatable.
       architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
         .then((data) => {
