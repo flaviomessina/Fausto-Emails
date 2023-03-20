@@ -41,7 +41,7 @@
       dataTableRow = '{ "searchID": "'+ searchId +'", "search": "'+ searchTerm +'"';
 
       // Create a new row entry for the datatable.
-      apiInstance.postFlowsDatatableRows(datatableId, dataTableRow)
+      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
         .then((data) => {
           console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
         })
@@ -175,7 +175,7 @@
       let actionId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | actionId
       let body = null; // {String: Object} | Map of parameters used for variable substitution.
 
-      apiInstance.postIntegrationsActionExecute(actionId, body)
+      integrationsApi.postIntegrationsActionExecute(actionId, body)
         .then((data) => {
           console.log(`postIntegrationsActionExecute success! data: ${JSON.stringify(data, null, 2)}`);
         })
