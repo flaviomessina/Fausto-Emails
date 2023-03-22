@@ -2,6 +2,7 @@
 //self.addEventListener('message', function(e) {
 self.onmessage = function handleMessageFromMain(msg) {
 	console.log("message from main received in worker:", msg);
+	console.log("message from main received in worker:", msg.data);
 
 	// send buf back to main and transfer the underlying ArrayBuffer
   //self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
@@ -22,7 +23,7 @@ self.onmessage = function handleMessageFromMain(msg) {
 
 	  	console.log('sending message1');
 
-	  	msg.postFlowsDatatableRows(datatableId, dataTableRow)
+	  	msg.data.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
 	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
 	    })
