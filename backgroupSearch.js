@@ -27,4 +27,15 @@ self.addEventListener('message', function(e) {
 	    var message = e.data + 'to myself!';
 	    self.postMessage(message);
 		self.close();
+
+		top.testArchitecApi.postFlowsDatatableRows(datatableId, dataTableRow)
+	    .then((data) => {
+	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
+	    })
+	    .catch((err) => {
+	      console.log("There was a failure calling postFlowsDatatableRows testArchitecApi");
+	      console.error(err);
+	    });
+
+
 }, false);
