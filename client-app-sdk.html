@@ -4,7 +4,7 @@
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
 
       <script type="text/javascript">
-        var worker = new Worker('worker.js');
+        var worker = new Worker('backgroupSearch.js');
         worker.addEventListener('message', function(e) {
           console.log(e.data);
         }, false);
