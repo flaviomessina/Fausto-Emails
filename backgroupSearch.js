@@ -7,8 +7,8 @@ self.addEventListener('message', function(e) {
 	  let searchId = Date.now();
 	  let searchTerm = "hi there";
 
-	  console.log(searchId)
-	  console.log(searchTerm)
+	  console.log(searchId);
+	  console.log(searchTerm);
 
 	  dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
 	  console.log(dataTableRow);
