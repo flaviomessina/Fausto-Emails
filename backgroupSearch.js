@@ -1,4 +1,3 @@
-<script type="text/javascript">
 
 self.addEventListener('message', function(e) {
 
@@ -15,6 +14,15 @@ self.addEventListener('message', function(e) {
 	  dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
 	  console.log(dataTableRow);
 
+	  top.testArchitecApi.postFlowsDatatableRows(datatableId, dataTableRow)
+	    .then((data) => {
+	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
+	    })
+	    .catch((err) => {
+	      console.log("There was a failure calling postFlowsDatatableRows testArchitecApi");
+	      console.error(err);
+	    });
+
 	  // Create a new row entry for the datatable.
 	  //architectApi = new platformClient.ArchitectApi();
 	  window.architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
@@ -30,15 +38,7 @@ self.addEventListener('message', function(e) {
 	    self.postMessage(message);
 		self.close();
 
-		top.testArchitecApi.postFlowsDatatableRows(datatableId, dataTableRow)
-	    .then((data) => {
-	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
-	    })
-	    .catch((err) => {
-	      console.log("There was a failure calling postFlowsDatatableRows testArchitecApi");
-	      console.error(err);
-	    });
+		
 
 
 }, false);
-</script>
