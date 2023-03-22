@@ -15,7 +15,7 @@ self.addEventListener('message', function(e) {
 
 	  // Create a new row entry for the datatable.
 	  //architectApi = new platformClient.ArchitectApi();
-	  architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
+	  window.architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
 	      console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
 	    })

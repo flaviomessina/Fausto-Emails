@@ -53,7 +53,7 @@
 
       // Create a new row entry for the datatable.
       //architectApi = new platformClient.ArchitectApi();
-      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
+      window.architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
         .then((data) => {
           console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
         })
@@ -106,7 +106,7 @@
     let userDetails = null;
 
     var integrationsApi;
-    var architectApi;
+    window.architectApi;
     var testName = 'hiThere';
 
     /**
@@ -117,7 +117,7 @@
       const client = platformClient.ApiClient.instance;
       const usersApi = new platformClient.UsersApi();
       integrationsApi = new platformClient.IntegrationsApi();
-      architectApi = new platformClient.ArchitectApi();
+      window.architectApi = new platformClient.ArchitectApi();
 
       // Configure Client App
       let ClientApp = window.purecloud.apps.ClientApp;
