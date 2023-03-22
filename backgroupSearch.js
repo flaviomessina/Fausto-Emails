@@ -50,7 +50,7 @@ self.onmessage = function handleMessageFromMain(msg) {
 		console.log(err.message);
 	}
 
-	    var message = e.data + 'to myself!';
+	    var message = 'to myself!';
 	    self.postMessage(message);
 		self.close();
 
