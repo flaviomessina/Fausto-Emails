@@ -22,7 +22,7 @@ self.onmessage = function handleMessageFromMain(msg) {
 
 	  	console.log('sending message');
 
-	  message.postFlowsDatatableRows(datatableId, dataTableRow)
+	  	msg.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
 	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
 	    })
