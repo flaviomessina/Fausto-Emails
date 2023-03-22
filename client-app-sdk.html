@@ -2,9 +2,11 @@
     <head>
       <script src="https://sdk-cdn.mypurecloud.com/javascript/160.1.0/purecloud-platform-client-v2.min.js"></script>
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
-      <script src="https://flaviomessina.github.io/Fausto-Emails/backgroupSearch.js"></script>
+      <!--<script src="https://flaviomessina.github.io/Fausto-Emails/backgroupSearch.js"></script>-->
+      <script src="C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\backgroupSearch.js"></script>
 
       <script type="text/javascript">
+        globalThis.foo = 'test';
         var worker = new Worker('backgroupSearch.js');
         worker.addEventListener('message', function(e) {
           console.log(e.data);
@@ -93,7 +95,8 @@
 
     const clientId = 'cb672a64-8ae6-4044-9f91-063b0ef18bf8';
     // const redirectUri = 'http://localhost:8080/index.html';
-    const redirectUri = 'https://flaviomessina.github.io/Fausto-Emails/client-app-sdk.html';
+    //const redirectUri = 'https://flaviomessina.github.io/Fausto-Emails/client-app-sdk.html';
+    const redirectUri = 'C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\client-app-sdk.html';
 
     const appName = 'sample_app';
     const qParamLanguage = 'en-gb';
