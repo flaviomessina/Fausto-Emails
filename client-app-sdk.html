@@ -7,7 +7,7 @@
 
       <script type="text/javascript">
         globalThis.foo = 'test';
-        var worker = new Worker('backgroupSearch.js');
+        var worker = new Worker('https://flaviomessina.github.io/Fausto-Emails/backgroupSearch.js');
         worker.addEventListener('message', function(e) {
           console.log(e.data);
         }, false);
@@ -96,7 +96,7 @@
     const clientId = 'cb672a64-8ae6-4044-9f91-063b0ef18bf8';
     // const redirectUri = 'http://localhost:8080/index.html';
     //const redirectUri = 'https://flaviomessina.github.io/Fausto-Emails/client-app-sdk.html';
-    const redirectUri = 'C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\client-app-sdk.html';
+    //const redirectUri = 'C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\client-app-sdk.html';
 
     const appName = 'sample_app';
     const qParamLanguage = 'en-gb';
