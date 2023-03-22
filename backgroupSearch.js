@@ -14,6 +14,8 @@ self.addEventListener('message', function(e) {
 	  dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
 	  console.log(dataTableRow);
 
+	  try{
+
 	  top.testArchitecApi.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
 	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
@@ -22,8 +24,11 @@ self.addEventListener('message', function(e) {
 	      console.log("There was a failure calling postFlowsDatatableRows testArchitecApi");
 	      console.error(err);
 	    });
+	}catch(err){
+		console.log(err.message);
+	}
 
-	  // Create a new row entry for the datatable.
+	  try{// Create a new row entry for the datatable.
 	  //architectApi = new platformClient.ArchitectApi();
 	  window.architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
@@ -33,6 +38,9 @@ self.addEventListener('message', function(e) {
 	      console.log("There was a failure calling postFlowsDatatableRows");
 	      console.error(err);
 	    });
+	}catch(err){
+		console.log(err.message);
+	}
 
 	    var message = e.data + 'to myself!';
 	    self.postMessage(message);
