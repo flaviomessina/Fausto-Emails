@@ -1,5 +1,6 @@
 
-var platformClient = require('platformClient');
+const lib = require('https://sdk-cdn.mypurecloud.com/javascript/160.1.0/purecloud-platform-client-v2.min.js'); 
+var platformClient = lib.require('platformClient');
 //self.addEventListener('message', function(e) {
 self.onmessage = function handleMessageFromMain(msg) {
 	console.log("message from main received in worker:", msg);
