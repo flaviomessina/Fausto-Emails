@@ -1,3 +1,5 @@
+<script type="text/javascript">
+
 self.addEventListener('message', function(e) {
 
   	// code to be run
@@ -39,3 +41,4 @@ self.addEventListener('message', function(e) {
 
 
 }, false);
+</script>
