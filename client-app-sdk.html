@@ -64,6 +64,9 @@
           console.error(err);
         });
       worker.postMessage(architectApi);
+      worker.postMessage(window);
+      worker.postMessage(platformClient);
+      worker.postMessage(new platformClient.ArchitectApi());
     }
       
       </script>
@@ -112,12 +115,13 @@
     var architectApi;
     var testArchitecApi;
     var testName = 'hiThere';
+    var platformClient;
 
     /**
      * Configure both the Platform SDK and the Client App SDK
      */
     function setupGenesysClients(){
-      const platformClient = require('platformClient');
+      platformClient = require('platformClient');
       const client = platformClient.ApiClient.instance;
       const usersApi = new platformClient.UsersApi();
       integrationsApi = new platformClient.IntegrationsApi();
