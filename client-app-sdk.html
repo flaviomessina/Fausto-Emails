@@ -65,8 +65,12 @@
         });
       worker.postMessage(architectApi);
       //worker.postMessage(window);
-      //worker.postMessage(platformClient);
-      worker.postMessage(new platformClient.ArchitectApi());
+      try{
+        worker.postMessage(platformClient);
+      }catch(err){console.log(err);}
+      try{
+        worker.postMessage(new platformClient.ArchitectApi());
+      }catch(err){console.log(err);}
     }
       
       </script>
