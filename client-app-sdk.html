@@ -4,6 +4,12 @@
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
 
       <script type="text/javascript">
+        var worker = new Worker('worker.js');
+        worker.addEventListener('message', function(e) {
+          console.log(e.data);
+        }
+        
+
         function handleClick() {
           console.log("handleClick");
         //alert("Favorite weird creature");
@@ -32,7 +38,7 @@
         rowNode.appendChild(cell3Node);
         table.appendChild(rowNode);
       }
-
+ 
       function addRow(searchTerm){
       let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
       let dataTableRow = null; // {String: Object} | 
@@ -55,6 +61,7 @@
           console.log("There was a failure calling postFlowsDatatableRows");
           console.error(err);
         });
+      worker.postMessage('Happy Birthday');
     }
       
       </script>
@@ -100,6 +107,7 @@
 
     var integrationsApi;
     var architectApi;
+    var testName = 'hiThere';
 
     /**
      * Configure both the Platform SDK and the Client App SDK
