@@ -20,7 +20,7 @@ self.onmessage = function handleMessageFromMain(msg) {
 
 	  try{
 
-	  	console.log('sending message');
+	  	console.log('sending message1');
 
 	  	msg.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
