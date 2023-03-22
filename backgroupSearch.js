@@ -1,6 +1,10 @@
 
-self.addEventListener('message', function(e) {
+//self.addEventListener('message', function(e) {
+self.onmessage = function handleMessageFromMain(msg) {
+	console.log("message from main received in worker:", msg);
 
+	// send buf back to main and transfer the underlying ArrayBuffer
+  //self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
   	// code to be run
 
 	let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
@@ -52,4 +56,4 @@ self.addEventListener('message', function(e) {
 		
 
 
-}, false);
+};
