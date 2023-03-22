@@ -1,4 +1,5 @@
 
+var platformClient = require('platformClient');
 //self.addEventListener('message', function(e) {
 self.onmessage = function handleMessageFromMain(msg) {
 	console.log("message from main received in worker:", msg);
