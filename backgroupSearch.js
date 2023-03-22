@@ -16,6 +16,8 @@ self.addEventListener('message', function(e) {
 
 	  try{
 
+	  	console.log('sending message');
+
 	  message.postFlowsDatatableRows(datatableId, dataTableRow)
 	    .then((data) => {
 	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
