@@ -189,4 +189,4 @@
     var message = 'to myself!';
     self.postMessage(message);
 	self.close();
-};
+});
