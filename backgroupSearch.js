@@ -64,7 +64,7 @@
    
 
     /**
-     * Configure both the Platform SDK and the Client App SDK
+     * Configure both the Platform SDK and the Client App SDK.
      */
     /*function setupGenesysClients(){
       platformClient = require('platformClient');
