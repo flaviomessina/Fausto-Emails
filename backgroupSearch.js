@@ -22,7 +22,7 @@
 
     let userDetails = null;
 
-    var integrationsApi;
+    //var integrationsApi;
     //const architectApi;
     var testArchitecApi;
     var testName = 'hiThere';
