@@ -2,11 +2,12 @@
     <head>
       
       <script src="https://sdk-cdn.mypurecloud.com/javascript/160.1.0/purecloud-platform-client-v2.min.js"></script>
+
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
+      
       <!--<script src="https://flaviomessina.github.io/Fausto-Emails/backgroupSearch.js"></script>
       <script src="C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\backgroupSearch.js"></script>-->
-      <script type="text/javascript">
-      </script>
+
       </head>
     <body>
       <h1>Email Test</h1>
@@ -29,24 +30,14 @@
       </thead>
       <tbody id="tableBody"></tbody>
     </table>
-    <script type="text/javascript">
-    
-      /*var worker = new Worker('backgroupSearch.js');
-      worker.addEventListener('message', function(e) {
-        console.log(e.data);
-      }, false);*/
-
+    <script>$( function  () {
 
     function handleClick() {
           console.log("handleClick");
         //alert("Favorite weird creature");
         //event.preventDefault(); // disable normal form submit behavior
         addInteraction("1234", "test@test", "hello");
-        /*try{
-        worker.postMessage("search term");
-      }catch(err){console.log(err);}
-        return false; // prevent further bubbling of event
-      }*/
+      }
 
       function addInteraction(interactionID, Sender, Subject) {
           console.log("addInteraction");
@@ -209,13 +200,11 @@
       
     }
       
-
-    assignConfiguration();
+      assignConfiguration();
       console.log(`environment: ${environment}`);
       console.log(`language: ${language}`);
-
       setupGenesysClients();
-
+    });
     </script>
     </body>
 </html>
