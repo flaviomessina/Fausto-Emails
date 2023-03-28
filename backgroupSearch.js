@@ -153,7 +153,6 @@
 	try{
 		console.log("message from main received in worker:", e);
 		console.log("message from main received in worker:", e.data);
-		console.log("message from main received in worker:", len(e.data));
 
 		// send buf back to main and transfer the underlying ArrayBuffer
 	  	//self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
@@ -164,8 +163,6 @@
 	}catch(err){
 		console.log(err.message);
 	}
-
-	addRow(msg.data);
 
     var message = 'to myself!';
     self.postMessage(message);
