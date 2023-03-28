@@ -23,7 +23,7 @@
     let userDetails = null;
 
     var integrationsApi;
-    const architectApi;
+    //const architectApi;
     var testArchitecApi;
     var testName = 'hiThere';
     var platformClient;
