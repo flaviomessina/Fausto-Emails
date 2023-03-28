@@ -28,10 +28,45 @@
     var testName = 'hiThere';
     var platformClient;
 
+
+      platformClient = require('platformClient');
+      const client = platformClient.ApiClient.instance;
+      const usersApi = new platformClient.UsersApi();
+      const integrationsApi = new platformClient.IntegrationsApi();
+      
+      architectApi1 = new platformClient.ArchitectApi();
+      const architectApi2 = new platformClient.ArchitectApi();
+      //top.testArchitecApi = new platformClient.ArchitectApi();
+	  architectApi = new platformClient.ArchitectApi();
+      // Configure Client App
+      const ClientApp = window.purecloud.apps.ClientApp;
+      const myClientApp = new ClientApp({
+          pcEnvironment: environment
+      });
+
+      // Configure and Authenticate Platform Client
+      client.setPersistSettings(true, appName);
+      client.setEnvironment(environment);
+
+      console.log("loginImplicitGrant");
+
+      return client.loginImplicitGrant(clientId, redirectUri)
+
+        .then(data =>  usersApi.getUsersMe())
+        .then(data => {
+          userDetails = data;
+
+          myClientApp.alerting.showToastPopup(
+            `Hi ${userDetails.name}`, 
+            'Never gonna give you up, never gonna let you down 😊');
+        })
+        .catch(err => console.log(err));  
+   
+
     /**
      * Configure both the Platform SDK and the Client App SDK
      */
-    function setupGenesysClients(){
+    /*function setupGenesysClients(){
       platformClient = require('platformClient');
       const client = platformClient.ApiClient.instance;
       const usersApi = new platformClient.UsersApi();
@@ -64,7 +99,7 @@
             'Never gonna give you up, never gonna let you down 😊');
         })
         .catch(err => console.log(err));  
-    }
+    }*/
 
     /**
      * Assign the language and environment for the app first through
