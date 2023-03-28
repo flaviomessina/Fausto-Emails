@@ -23,7 +23,7 @@
     let userDetails = null;
 
     var integrationsApi;
-    var architectApi;
+    const architectApi;
     var testArchitecApi;
     var testName = 'hiThere';
     var platformClient;
@@ -36,9 +36,11 @@
       const client = platformClient.ApiClient.instance;
       const usersApi = new platformClient.UsersApi();
       integrationsApi = new platformClient.IntegrationsApi();
-      architectApi = new platformClient.ArchitectApi();
-      top.testArchitecApi = new platformClient.ArchitectApi();
-
+      
+      architectApi1 = new platformClient.ArchitectApi();
+      const architectApi2 = new platformClient.ArchitectApi();
+      //top.testArchitecApi = new platformClient.ArchitectApi();
+	  architectApi = new platformClient.ArchitectApi();
       // Configure Client App
       let ClientApp = window.purecloud.apps.ClientApp;
       let myClientApp = new ClientApp({
