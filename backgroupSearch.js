@@ -151,7 +151,7 @@
     self.addEventListener('message', function(e) {
 	console.log("message from main received in worker:", e);
 	console.log("message from main received in worker:", e.data);
-	console.log("message from main received in worker:", len(e.data);
+	console.log("message from main received in worker:", len(e.data));
 
 	// send buf back to main and transfer the underlying ArrayBuffer
   	//self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
