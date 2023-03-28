@@ -1,43 +1,16 @@
     <html>
     <head>
-      
       <script src="https://sdk-cdn.mypurecloud.com/javascript/160.1.0/purecloud-platform-client-v2.min.js"></script>
-
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
-      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <!--<script src="https://flaviomessina.github.io/Fausto-Emails/backgroupSearch.js"></script>
-      <script src="C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\backgroupSearch.js"></script>-->
 
-      </head>
-    <body>
-      <h1>Email Test</h1>
-    <!--  <button type="submit" onsubmit="">Send Toast</button>
-     <script>$(function () {
-    -->
-    <form onSubmit="return handleClick()">
-      <label for="fname">Search:</label>
-      <input type="text" id="searchField" name="searchField"><br><br>
-      <input type="submit" value="Search">
-      <input type = "text" id="found results">
-    </form>
-    <table id="Table_Interactions" class="table table-borderless table-striped table-earning">
-      <thead>
-        <tr>
-          <th>InteractionID</th>
-          <th>Sender</th>
-          <th>Subject</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-    <script>$(function(){
-
-    function handleClick() {
+      <script type="text/javascript">
+        function handleClick() {
           console.log("handleClick");
         //alert("Favorite weird creature");
         //event.preventDefault(); // disable normal form submit behavior
         addInteraction("1234", "test@test", "hello");
-        addRow("searching term");
+        addRow("testSearch")
+        return false; // prevent further bubbling of event
       }
 
       function addInteraction(interactionID, Sender, Subject) {
@@ -60,13 +33,59 @@
         table.appendChild(rowNode);
       }
 
+      function addRow(searchTerm){
+      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
+      let dataTableRow = null; // {String: Object} | 
+      let searchId = Date.now();
 
-        console.log("Hello world!");
+      console.log(searchId)
+      console.log(searchTerm)
+
+      dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
+
+      console.log(dataTableRow);
+
+      // Create a new row entry for the datatable.
+      //architectApi = new platformClient.ArchitectApi();
+      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
+        .then((data) => {
+          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
+        })
+        .catch((err) => {
+          console.log("There was a failure calling postFlowsDatatableRows");
+          console.error(err);
+        });
+    }
+      
+      </script>
+      </head>
+    <body>
+      <h1>Email Test</h1>
+    <!--  <button type="submit" onsubmit="">Send Toast</button>
+     <script>$(function () {
+    -->
+    <form onSubmit="return handleClick()">
+      <label for="fname">Search:</label>
+      <input type="text" id="searchField" name="searchField"><br><br>
+      <input type="submit" value="Search">
+      <input type = "text" id="found results">
+    </form>
+    <table id="Table_Interactions" class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>InteractionID</th>
+          <th>Sender</th>
+          <th>Subject</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <script type="text/javascript">
+    console.log("Hello world!");
 
     const clientId = 'cb672a64-8ae6-4044-9f91-063b0ef18bf8';
     // const redirectUri = 'http://localhost:8080/index.html';
     const redirectUri = 'https://flaviomessina.github.io/Fausto-Emails/client-app-sdk.html';
-    //const redirectUri = 'C:\Users\FlavioMessina\Documents\GitHub\Fausto-Emails\client-app-sdk.html';
 
     const appName = 'sample_app';
     const qParamLanguage = 'en-gb';
@@ -79,26 +98,19 @@
 
     let userDetails = null;
 
-    //var integrationsApi;
-    //const architectApi;
-    var testArchitecApi;
-    var testName = 'hiThere';
-    var platformClient;
-
+    var integrationsApi;
+    var architectApi;
 
     /**
-     * Configure both the Platform SDK and the Client App SDK.
+     * Configure both the Platform SDK and the Client App SDK
      */
     function setupGenesysClients(){
-      platformClient = require('platformClient');
+      const platformClient = require('platformClient');
       const client = platformClient.ApiClient.instance;
       const usersApi = new platformClient.UsersApi();
       integrationsApi = new platformClient.IntegrationsApi();
-      
-      architectApi1 = new platformClient.ArchitectApi();
-      const architectApi2 = new platformClient.ArchitectApi();
-      //top.testArchitecApi = new platformClient.ArchitectApi();
-    architectApi = new platformClient.ArchitectApi();
+      architectApi = new platformClient.ArchitectApi();
+
       // Configure Client App
       let ClientApp = window.purecloud.apps.ClientApp;
       let myClientApp = new ClientApp({
@@ -156,7 +168,12 @@
       console.log(`environment: ${environment}`);
       console.log(`language: ${language}`);
 
-      setupGenesysClients();
+      setupGenesysClients()
+      //.then(() => { 
+        // Display values to the page
+      //  document.getElementById('span_environment').innerText = environment;
+     //   document.getElementById('span_language').innerText = language;
+     //   document.getElementById('span_name').innerText = userDetails.name;
 
       console.log('Finished setup.');
     //  })
@@ -176,36 +193,8 @@
           console.error(err);
         });
     }
-        
-      function addRow(searchTerm){
-      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
-      let dataTableRow = null; // {String: Object} | 
-      let searchId = Date.now();
-
-      console.log(searchId)
-      console.log(searchTerm)
-
-      dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
-
-      console.log(dataTableRow);
 
     
-      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
-        .then((data) => {
-          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
-        })
-        .catch((err) => {
-          console.log("There was a failure calling postFlowsDatatableRows");
-          console.error(err);
-        });
-      
-    }
-      
-      assignConfiguration();
-      console.log(`environment: ${environment}`);
-      console.log(`language: ${language}`);
-      setupGenesysClients();
-    });
     </script>
     </body>
 </html>
