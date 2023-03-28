@@ -91,7 +91,7 @@
     }
 
     // After page loads...
-    window.addEventListener('load', (event) => {
+    /*window.addEventListener('load', (event) => {
       assignConfiguration();
       console.log(`environment: ${environment}`);
       console.log(`language: ${language}`);
@@ -105,7 +105,7 @@
 
       console.log('Finished setup.');
     //  })
-    });
+    });*/
 
     function search(searchTerm){
 
@@ -149,37 +149,18 @@
       
 	//self.onmessage = function addSearchFromMain(msg) {
     self.addEventListener('message', function(e) {
-	console.log("message from main received in worker:", e);
-	console.log("message from main received in worker:", e.data);
-	console.log("message from main received in worker:", len(e.data));
-
-	// send buf back to main and transfer the underlying ArrayBuffer
-  	//self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
-  	// code to be run
-
-	let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
-	let dataTableRow = null; // {String: Object} | 
-	let searchId = Date.now();
-	let searchTerm = "hi there";
-
-	console.log(searchId);
-	console.log(searchTerm);
-
-	dataTableRow = '{"search":"'+ e.data +'", "key": "'+ searchId +'"}';
-	console.log(dataTableRow);
-
+	
 	try{
+		console.log("message from main received in worker:", e);
+		console.log("message from main received in worker:", e.data);
+		console.log("message from main received in worker:", len(e.data));
 
-		console.log('sending message2');
+		// send buf back to main and transfer the underlying ArrayBuffer
+	  	//self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
+	  	// code to be run
 
-	  	msg.data.postFlowsDatatableRows(datatableId, dataTableRow)
-	    .then((data) => {
-	      console.log(`postFlowsDatatableRows success testArchitecApi! data: ${JSON.stringify(data, null, 2)}`);
-	    })
-	    .catch((err) => {
-	      console.log("There was a failure calling postFlowsDatatableRows testArchitecApi");
-	      console.error(err);
-	    });
+		addRow(e.data);
+
 	}catch(err){
 		console.log(err.message);
 	}
@@ -190,3 +171,16 @@
     self.postMessage(message);
 	self.close();
 });
+
+    assignConfiguration();
+      console.log(`environment: ${environment}`);
+      console.log(`language: ${language}`);
+
+      setupGenesysClients()
+      //.then(() => { 
+        // Display values to the page
+      //  document.getElementById('span_environment').innerText = environment;
+     //   document.getElementById('span_language').innerText = language;
+     //   document.getElementById('span_name').innerText = userDetails.name;
+
+      console.log('Finished setup.');
