@@ -142,7 +142,49 @@
 
       // Create a new row entry for the datatable.
       //architectApi = new platformClient.ArchitectApi();
-      architectApi.postFlowsDatatableRows(datatableId, dataTableRow)
+
+
+      platformClient = require('platformClient');
+      //const client = platformClient.ApiClient.instance;
+      //const usersApi = new platformClient.UsersApi();
+      //const integrationsApi = new platformClient.IntegrationsApi();
+      
+      architectApi3 = new platformClient.ArchitectApi();
+      //const architectApi2 = new platformClient.ArchitectApi();
+      //top.testArchitecApi = new platformClient.ArchitectApi();
+	  //architectApi = new platformClient.ArchitectApi();
+      // Configure Client App
+      /*const ClientApp = window.purecloud.apps.ClientApp;
+      const myClientApp = new ClientApp({
+          pcEnvironment: environment
+      });
+
+      // Configure and Authenticate Platform Client
+      client.setPersistSettings(true, appName);
+      client.setEnvironment(environment);
+
+      console.log("loginImplicitGrant 2");
+
+      client.loginImplicitGrant(clientId, redirectUri)
+
+        .then(data =>  usersApi.getUsersMe())
+        .then(data => {
+          userDetails = data;
+
+          myClientApp.alerting.showToastPopup(
+            `Hi ${userDetails.name}`, 
+            'Never gonna give you up, never gonna let you down 😊');
+        })
+        .catch(err => console.log(err)); */
+
+
+
+
+
+
+
+
+      architectApi3.postFlowsDatatableRows(datatableId, dataTableRow)
         .then((data) => {
           console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
         })
