@@ -50,7 +50,7 @@
 
       console.log("loginImplicitGrant");
 
-      return client.loginImplicitGrant(clientId, redirectUri)
+      client.loginImplicitGrant(clientId, redirectUri)
 
         .then(data =>  usersApi.getUsersMe())
         .then(data => {
