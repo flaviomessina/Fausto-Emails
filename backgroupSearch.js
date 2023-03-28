@@ -147,9 +147,11 @@
       
     }
       
-	self.onmessage = function addSearchFromMain(msg) {
-	console.log("message from main received in worker:", msg);
-	console.log("message from main received in worker:", msg.data);
+	//self.onmessage = function addSearchFromMain(msg) {
+    self.addEventListener('message', function(e) {
+	console.log("message from main received in worker:", e);
+	console.log("message from main received in worker:", e.data);
+	console.log("message from main received in worker:", len(e.data);
 
 	// send buf back to main and transfer the underlying ArrayBuffer
   	//self.postMessage(bufTransferredFromMain, [bufTransferredFromMain]);
@@ -163,7 +165,7 @@
 	console.log(searchId);
 	console.log(searchTerm);
 
-	dataTableRow = '{"search":"'+ msg.data +'", "key": "'+ searchId +'"}';
+	dataTableRow = '{"search":"'+ e.data +'", "key": "'+ searchId +'"}';
 	console.log(dataTableRow);
 
 	try{
