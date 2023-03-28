@@ -29,38 +29,7 @@
     var platformClient;
 
 
-      platformClient = require('platformClient');
-      const client = platformClient.ApiClient.instance;
-      const usersApi = new platformClient.UsersApi();
-      const integrationsApi = new platformClient.IntegrationsApi();
       
-      architectApi1 = new platformClient.ArchitectApi();
-      const architectApi2 = new platformClient.ArchitectApi();
-      //top.testArchitecApi = new platformClient.ArchitectApi();
-	  architectApi = new platformClient.ArchitectApi();
-      // Configure Client App
-      const ClientApp = window.purecloud.apps.ClientApp;
-      const myClientApp = new ClientApp({
-          pcEnvironment: environment
-      });
-
-      // Configure and Authenticate Platform Client
-      client.setPersistSettings(true, appName);
-      client.setEnvironment(environment);
-
-      console.log("loginImplicitGrant");
-
-      client.loginImplicitGrant(clientId, redirectUri)
-
-        .then(data =>  usersApi.getUsersMe())
-        .then(data => {
-          userDetails = data;
-
-          myClientApp.alerting.showToastPopup(
-            `Hi ${userDetails.name}`, 
-            'Never gonna give you up, never gonna let you down 😊');
-        })
-        .catch(err => console.log(err));  
    
 
     /**
@@ -210,11 +179,39 @@
       console.log(`environment: ${environment}`);
       console.log(`language: ${language}`);
 
-      setupGenesysClients()
-      //.then(() => { 
-        // Display values to the page
-      //  document.getElementById('span_environment').innerText = environment;
-     //   document.getElementById('span_language').innerText = language;
-     //   document.getElementById('span_name').innerText = userDetails.name;
+      //setupGenesysClients()
+      
+      platformClient = require('platformClient');
+      const client = platformClient.ApiClient.instance;
+      const usersApi = new platformClient.UsersApi();
+      const integrationsApi = new platformClient.IntegrationsApi();
+      
+      architectApi1 = new platformClient.ArchitectApi();
+      const architectApi2 = new platformClient.ArchitectApi();
+      //top.testArchitecApi = new platformClient.ArchitectApi();
+	  architectApi = new platformClient.ArchitectApi();
+      // Configure Client App
+      const ClientApp = window.purecloud.apps.ClientApp;
+      const myClientApp = new ClientApp({
+          pcEnvironment: environment
+      });
+
+      // Configure and Authenticate Platform Client
+      client.setPersistSettings(true, appName);
+      client.setEnvironment(environment);
+
+      console.log("loginImplicitGrant");
+
+      client.loginImplicitGrant(clientId, redirectUri)
+
+        .then(data =>  usersApi.getUsersMe())
+        .then(data => {
+          userDetails = data;
+
+          myClientApp.alerting.showToastPopup(
+            `Hi ${userDetails.name}`, 
+            'Never gonna give you up, never gonna let you down 😊');
+        })
+        .catch(err => console.log(err));  
 
       console.log('Finished setup.');
