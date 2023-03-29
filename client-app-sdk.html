@@ -59,7 +59,7 @@
     }
 
     function getRows(){
-      let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
+      let datatableId = "061182db-23dc-487a-af2f-ab81de31423b"; // String | id of datatable
       let opts = { 
         'pageNumber': 1, // Number | Page number
         'pageSize': 5, // Number | Page size
@@ -69,6 +69,7 @@
       
       architectApi.getFlowsDatatableRows(datatableId, opts)
         .then((data) => {
+          console.log('My object : ' + data);
           console.log(`getFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
         })
         .catch((err) => {
