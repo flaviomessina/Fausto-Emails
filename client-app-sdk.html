@@ -58,7 +58,7 @@
         delayedGreeting();
     }
 
-    function getRows(searchTerm){
+    function getRows(){
       let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
       let opts = { 
         'pageNumber': 1, // Number | Page number
@@ -96,10 +96,10 @@
 
     async function delayedGreeting() {
       console.log("Hello");
-      addRow("searching");
+      getRows();
       await sleep(2000);
       console.log("World!");
-      addRow("search again");
+      getRows();
       await sleep(2000);
       console.log("Goodbye!");
     }
