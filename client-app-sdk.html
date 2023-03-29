@@ -63,27 +63,16 @@
       let opts = { 
         'pageNumber': 1, // Number | Page number
         'pageSize': 500, // Number | Page size
-        'showbrief': true, // Boolean | If true returns just the key value of the row
+        'showbrief': false, // Boolean | If true returns just the key value of the row
         'sortOrder': "ascending" // String | Sort order
       };
-      //let dataTableRow = null; // {String: Object} | 
-      //let searchId = Date.now();
-
-      //console.log(searchId)
-      //console.log(searchTerm)
-
-      //dataTableRow = '{"search":"'+ searchTerm +'", "key": "'+ searchId +'"}';
-
-      //console.log(dataTableRow);
-
-      // Create a new row entry for the datatable.
-      //architectApi = new platformClient.ArchitectApi();
+      
       architectApi.getFlowsDatatableRows(datatableId, opts)
         .then((data) => {
-          console.log(`postFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
+          console.log(`getFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
         })
         .catch((err) => {
-          console.log("There was a failure calling postFlowsDatatableRows");
+          console.log("There was a failure calling getFlowsDatatableRows");
           console.error(err);
         });
         //DataTableRowEntityListing
