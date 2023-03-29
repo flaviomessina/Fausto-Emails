@@ -55,10 +55,12 @@
           console.log("There was a failure calling postFlowsDatatableRows");
           console.error(err);
         });
+
+        architectApi.postFlowsDatatableRows("061182db-23dc-487a-af2f-ab81de31423b", '{"searchID":"'+ searchId +'", "key": "'+ Date.now() +'"}')
         delayedGreeting();
     }
 
-    function getRows(){
+    function getRows(searchId){
       let datatableId = "061182db-23dc-487a-af2f-ab81de31423b"; // String | id of datatable
       let opts = { 
         'pageNumber': 1, // Number | Page number
@@ -76,8 +78,14 @@
           console.log("There was a failure calling getFlowsDatatableRows");
           console.error(err);
         });
-        //DataTableRowEntityListing
-        
+        searchResults = data.entities.filter(element => element.searchID === searchId);
+        if(searchResults.length > 0){
+          searchResults.forEach(function (item, index) {
+            //console.log(item, index);
+            addInteraction(emailID, "Sender", "Subject");
+          });
+          
+        }
     }
 
     function sleep(ms) {
