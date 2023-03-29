@@ -62,7 +62,7 @@
       let datatableId = "13a448c9-8c47-4ddd-992d-8aa2d3add55e"; // String | id of datatable
       let opts = { 
         'pageNumber': 1, // Number | Page number
-        'pageSize': 500, // Number | Page size
+        'pageSize': 5, // Number | Page size
         'showbrief': false, // Boolean | If true returns just the key value of the row
         'sortOrder': "ascending" // String | Sort order
       };
@@ -86,10 +86,10 @@
     async function delayedGreeting() {
       console.log("Hello");
       getRows();
-      await sleep(2000);
+      await sleep(10000);
       console.log("World!");
       getRows();
-      await sleep(2000);
+      await sleep(10000);
       console.log("Goodbye!");
     }
       
