@@ -55,6 +55,7 @@
           console.log("There was a failure calling postFlowsDatatableRows");
           console.error(err);
         });
+        delayedGreeting();
     }
 
     function getRows(searchTerm){
@@ -86,7 +87,7 @@
           console.error(err);
         });
         //DataTableRowEntityListing
-        delayedGreeting();
+        
     }
 
     function sleep(ms) {
