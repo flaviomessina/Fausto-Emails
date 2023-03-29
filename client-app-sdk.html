@@ -57,7 +57,7 @@
         });
 
         architectApi.postFlowsDatatableRows("061182db-23dc-487a-af2f-ab81de31423b", '{"searchID":"'+ searchId +'", "key": "'+ Date.now() +'"}')
-        delayedGreeting();
+        delayedGreeting(searchId);
     }
 
     function getRows(searchId){
@@ -78,6 +78,7 @@
           console.log("There was a failure calling getFlowsDatatableRows");
           console.error(err);
         });
+        
         searchResults = data.entities.filter(element => element.searchID === searchId);
         if(searchResults.length > 0){
           searchResults.forEach(function (item, index) {
@@ -92,12 +93,12 @@
     return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function delayedGreeting() {
+    async function delayedGreeting(searchId) {
       console.log("Hello");
-      getRows();
+      getRows(searchId);
       await sleep(10000);
       console.log("World!");
-      getRows();
+      getRows(searchId);
       await sleep(10000);
       console.log("Goodbye!");
     }
