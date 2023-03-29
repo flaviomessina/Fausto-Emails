@@ -1,5 +1,8 @@
     <html>
     <head>
+      <meta http-equiv='cache-control' content='no-cache'> 
+      <meta http-equiv='expires' content='0'> 
+      <meta http-equiv='pragma' content='no-cache'>
       <script src="https://sdk-cdn.mypurecloud.com/javascript/160.1.0/purecloud-platform-client-v2.min.js"></script>
       <script src="https://sdk-cdn.mypurecloud.com/client-apps/2.6.3/purecloud-client-app-sdk-de77761d.min.js"></script>
 
@@ -78,7 +81,7 @@
           console.log("There was a failure calling getFlowsDatatableRows");
           console.error(err);
         });
-        
+
         searchResults = data.entities.filter(element => element.searchID === searchId);
         if(searchResults.length > 0){
           searchResults.forEach(function (item, index) {
