@@ -63,8 +63,6 @@
         delayedGreeting(searchId);
     }
 
-    
-
     function getRows(searchId){
       let datatableId = "061182db-23dc-487a-af2f-ab81de31423b"; // String | id of datatable
       let opts = { 
@@ -91,7 +89,7 @@
         if(searchResults.length > 0){
           searchResults.forEach(function (item, index) {
             //console.log(item, index);
-            addInteraction(emailID, "Sender", "Subject");
+            addInteraction(item.emailID, "Sender", "Subject");
           });
       }
     }
