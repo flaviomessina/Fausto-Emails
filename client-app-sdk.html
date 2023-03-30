@@ -78,7 +78,6 @@
         .then((data) => {
           console.log('My object : ' + data);
           console.log(`getFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
-        }).then((data) => {
           filterData(data);
         }).catch((err) => {
           console.log("There was a failure calling getFlowsDatatableRows");
