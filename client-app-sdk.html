@@ -75,7 +75,7 @@
       architectApi.getFlowsDatatableRows(datatableId, opts)
         .then((data) => {
           console.log('My object : ' + data);
-          console.log(`getFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
+          console.log(`getFlowsDatatableRows success! data: ${data.entities.lenght}`);
           filterData(data, searchId);
         }).catch((err) => {
           console.log("There was a failure calling getFlowsDatatableRows");
@@ -101,10 +101,10 @@
     async function delayedGreeting(searchId) {
       console.log("Hello");
       getRows(searchId);
-      await sleep(5000);
+      await sleep(2000);
       console.log("World!");
       getRows(searchId);
-      await sleep(5000);
+      await sleep(2000);
       console.log("Goodbye!");
     }
       
