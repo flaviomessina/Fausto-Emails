@@ -78,14 +78,14 @@
         .then((data) => {
           console.log('My object : ' + data);
           console.log(`getFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
-          filterData(data);
+          filterData(data, searchId);
         }).catch((err) => {
           console.log("There was a failure calling getFlowsDatatableRows");
           console.error(err);
         });
     }
 
-    function filterData(data){
+    function filterData(data, searchId){
 
       data.entities.filter(element => element.searchID === searchId);
         if(searchResults.length > 0){
@@ -93,7 +93,6 @@
             //console.log(item, index);
             addInteraction(emailID, "Sender", "Subject");
           });
-
       }
     }
 
