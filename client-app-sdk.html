@@ -87,7 +87,7 @@
 
     function filterData(data, searchId){
 
-      data.entities.filter(element => element.searchID === searchId);
+      searchResults = data.entities.filter(element => element.searchID === searchId);
         if(searchResults.length > 0){
           searchResults.forEach(function (item, index) {
             //console.log(item, index);
