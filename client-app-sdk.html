@@ -63,6 +63,8 @@
         delayedGreeting(searchId);
     }
 
+    
+
     function getRows(searchId){
       let datatableId = "061182db-23dc-487a-af2f-ab81de31423b"; // String | id of datatable
       let opts = { 
@@ -72,25 +74,27 @@
         'sortOrder': "ascending" // String | Sort order
       };
       
-      data = architectApi.getFlowsDatatableRows(datatableId, opts)
+      architectApi.getFlowsDatatableRows(datatableId, opts)
         .then((data) => {
           console.log('My object : ' + data);
           console.log(`getFlowsDatatableRows success! data: ${JSON.stringify(data, null, 2)}`);
-          return data;
-        })
-        .catch((err) => {
+        }).then((data) => {
+          filterData(data);
+        }).catch((err) => {
           console.log("There was a failure calling getFlowsDatatableRows");
           console.error(err);
         });
+    }
 
-        searchResults = data.entities.filter(element => element.searchID === searchId);
+    function filterData(data){
+
+      data.entities.filter(element => element.searchID === searchId);
         if(searchResults.length > 0){
           searchResults.forEach(function (item, index) {
             //console.log(item, index);
             addInteraction(emailID, "Sender", "Subject");
           });
-          
-        }
+
     }
 
     function sleep(ms) {
